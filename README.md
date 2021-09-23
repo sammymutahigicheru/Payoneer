@@ -16,7 +16,7 @@ The tests in this code are UI tests.Use the default run configuration from Andro
 
 **Dependency Injection:** Using the newly released Dagger Hilt library from Google
 
-**Testing:** UI tests have been done using Espresso
+**Testing:** Unit tests
 
 **Threading:** RxJava
 
