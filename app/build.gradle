@@ -7,22 +7,34 @@ android {
     compileSdk 31
 
     defaultConfig {
+
+        def versionMajor = 1
+        def versionMinor = 3
+        def versionPatch = 1
+
         applicationId "com.sammy.payoneer"
         minSdk 21
         targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
+        versionName "$versionMajor.$versionMinor.$versionPatch"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
-        debug{
-            buildConfigField "String", "BASE_URL", "\"https://raw.githubusercontent.com/optile/checkout-android/develop/shared-test/lists/\""
-        }
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [
+                    appIcon           : "@mipmap/ic_launcher",
+                    appIconRound      : "@mipmap/ic_launcher_round"
+            ]
+        }
+        debug{
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+            buildConfigField "String", "BASE_URL", "\"https://raw.githubusercontent.com/optile/checkout-android/develop/shared-test/lists/\""
         }
     }
     compileOptions {
@@ -35,8 +47,6 @@ android {
 }
 
 dependencies {
-    def nav_version = "2.3.0-beta01"
-    def room_version = "2.3.0"
     def lifecycle_version = "2.3.1"
     def hilt_version = '2.38.1'
     def espressoVersion = '3.1.0'
@@ -80,16 +90,6 @@ dependencies {
 
     // LiveData
     implementation 'androidx.lifecycle:lifecycle-livedata:2.3.1'
-
-    // Room
-    implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
-    implementation "androidx.room:room-rxjava2:$room_version"
-    implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_version"
-
-    // Navigation
-    implementation "androidx.navigation:navigation-fragment:$nav_version"
-    implementation "androidx.navigation:navigation-ui:$nav_version"
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
