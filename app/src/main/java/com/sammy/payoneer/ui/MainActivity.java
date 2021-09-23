@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
-import com.sammy.payoneer.R;
 import com.sammy.payoneer.commons.NetworkManager;
 import com.sammy.payoneer.databinding.ActivityMainBinding;
 
@@ -67,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     showRetryErrorSnackbar(errorHolder.getMessage());
                 case 400:
-                    showRetryErrorSnackbar(getString(R.string.no_payment_methods));
+                    showRetryErrorSnackbar("Payment methods not found");
                 case 500:
-                    showRetryErrorSnackbar(getString(R.string._500));
+                    showRetryErrorSnackbar("Service temporarily unavailable, try again later");
             }
             showRetryErrorSnackbar(errorHolder.getMessage());
 

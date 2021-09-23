@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android Studio Projects/BestPractice/app/src/main/res/layout/activity_main.xml" value="0.22447916666666667" />
+        <entry key="..\:/Android Studio Projects/BestPractice/app/src/main/res/layout/activity_main.xml" value="0.3537037037037037" />
         <entry key="..\:/Android Studio Projects/BestPractice/app/src/main/res/layout/layout_payment_item.xml" value="0.22447916666666667" />
+        <entry key="..\:/Android Studio Projects/BestPractice/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.125" />
+        <entry key="..\:/Android Studio Projects/BestPractice/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.125" />
       </map>
     </option>
   </component>
