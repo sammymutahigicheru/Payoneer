@@ -1,4 +1,4 @@
-[![Android CI](https://github.com/sammymutahigicheru/Payoneer/actions/workflows/main.yml/badge.svg)](https://github.com/sammymutahigicheru/Payoneer/actions/workflows/main.yml)
+[![Android CI](https://github.com/sammymutahigicheru/PayoneerAndroidChallenge/actions/workflows/main.yml/badge.svg)](https://github.com/sammymutahigicheru/PayoneerAndroidChallenge/actions/workflows/main.yml)
 
 ## Run Locally
 
