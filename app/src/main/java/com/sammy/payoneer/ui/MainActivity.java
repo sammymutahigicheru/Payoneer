@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
+import com.sammy.payoneer.R;
 import com.sammy.payoneer.commons.NetworkManager;
 import com.sammy.payoneer.databinding.ActivityMainBinding;
 
@@ -33,12 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
         NetworkManager networkManager = new NetworkManager();
         boolean isNetworkAvailable = networkManager.isNetworkAvailable(this);
-        if (isNetworkAvailable) {
-            viewModel.getPaymentNetworks();
-            observeViewModel();
-        } else {
-            showErrorSnackbar("Unable to connect, turn on your internet connection");
-        }
+        viewModel.getPaymentNetworks();
+        observeViewModel();
     }
 
     private void observeViewModel() {
@@ -63,6 +60,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewModel.errorBody.observe(this, errorHolder -> {
+            switch (errorHolder.getCode()){
+                case 0:
+                    showErrorSnackbar(errorHolder.getMessage());
+                    break;
+                case 1:
+                    showRetryErrorSnackbar(errorHolder.getMessage());
+                case 400:
+                    showRetryErrorSnackbar(getString(R.string.no_payment_methods));
+                case 500:
+                    showRetryErrorSnackbar(getString(R.string._500));
+            }
             showRetryErrorSnackbar(errorHolder.getMessage());
 
         });

@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Payoneer</string>
     <string name="logo">LOGO</string>
+    <string name="no_payment_methods">Payment methods not found</string>
+    <string name="_500">Service temporarily unavailable, try again later</string>
 </resources>

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import com.sammy.payoneer.data.error.ErrorHolder;
 import com.sammy.payoneer.data.models.Applicable;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -16,6 +17,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.HttpException;
 
 @HiltViewModel
 public class PaymentViewModel extends ViewModel {
@@ -45,7 +47,14 @@ public class PaymentViewModel extends ViewModel {
                             _applicables.postValue(applicables);
                         }, throwable -> {
                             _isLoading.postValue(false);
-                            _errorBody.postValue(new ErrorHolder(throwable.getMessage()));
+                            if (throwable instanceof IOException) {
+                                _errorBody.postValue(new ErrorHolder("Unable to connect, turn on your internet connection", 1));
+                            } else if (throwable instanceof HttpException) {
+                                HttpException exception = (HttpException) throwable;
+                                _errorBody.postValue(new ErrorHolder(exception.message(), exception.code()));
+                            } else {
+                                _errorBody.postValue(new ErrorHolder(throwable.getMessage(), 0));
+                            }
                         }
                 );
         compositeDisposable.add(disposable);
