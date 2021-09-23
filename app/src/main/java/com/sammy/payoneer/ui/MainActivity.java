@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         NetworkManager networkManager = new NetworkManager();
         boolean isNetworkAvailable = networkManager.isNetworkAvailable(this);
         if (isNetworkAvailable) {
-            viewModel.getPaymentList();
+            viewModel.getPaymentNetworks();
             observeViewModel();
         } else {
             showErrorSnackbar("Unable to connect, turn on your internet connection");
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         snackbar.show();
         snackbar.setAction("RETRY", v -> {
             snackbar.dismiss();
-            viewModel.getPaymentList();
+            viewModel.getPaymentNetworks();
         });
     }
 

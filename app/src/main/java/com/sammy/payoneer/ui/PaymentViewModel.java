@@ -35,8 +35,8 @@ public class PaymentViewModel extends ViewModel {
         this.paymentRepository = paymentRepository;
     }
 
-    public void getPaymentList() {
-        Disposable disposable = paymentRepository.getPaymentList()
+    public void getPaymentNetworks() {
+        Disposable disposable = paymentRepository.getPaymentNetworks()
                 .subscribeOn(Schedulers.io())
                 .map(paymentListResponse -> paymentListResponse.getNetworks().getApplicable())
                 .observeOn(AndroidSchedulers.mainThread())

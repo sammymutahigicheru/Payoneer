@@ -44,7 +44,7 @@ public class ExampleUnitTest {
     public void setUp() throws Exception{
         MockitoAnnotations.initMocks(this);
         viewModel = new PaymentViewModel(paymentRepository);
-        viewModel.getPaymentList();
+        viewModel.getPaymentNetworks();
     }
 
     @Test

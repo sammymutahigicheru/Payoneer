@@ -15,7 +15,7 @@ public class PaymentRepository {
         this.apiService = apiService;
     }
 
-    public Observable<PaymentListResponse> getPaymentList() {
-        return apiService.getPaymentList();
+    public Observable<PaymentListResponse> getPaymentNetworks() {
+        return apiService.getPaymentNetworks();
     }
 }

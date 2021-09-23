@@ -7,5 +7,5 @@ import retrofit2.http.GET;
 
 public interface ApiService {
     @GET("listresult.json")
-    Observable<PaymentListResponse> getPaymentList();
+    Observable<PaymentListResponse> getPaymentNetworks();
 }
