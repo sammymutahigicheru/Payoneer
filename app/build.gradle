@@ -13,7 +13,7 @@ android {
         def versionPatch = 1
 
         applicationId "com.sammy.payoneer"
-        minSdk 21
+        minSdk 23
         targetSdk 31
         versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName "$versionMajor.$versionMinor.$versionPatch"
