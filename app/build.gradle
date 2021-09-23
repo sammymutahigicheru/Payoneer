@@ -9,7 +9,7 @@ android {
     defaultConfig {
 
         def versionMajor = 1
-        def versionMinor = 3
+        def versionMinor = 1
         def versionPatch = 1
 
         applicationId "com.sammy.payoneer"
@@ -18,7 +18,7 @@ android {
         versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName "$versionMajor.$versionMinor.$versionPatch"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.sammy.payoneer.CustomTestRunner"
     }
 
     buildTypes {
@@ -32,8 +32,6 @@ android {
             ]
         }
         debug{
-            applicationIdSuffix ".debug"
-            versionNameSuffix "-debug"
             buildConfigField "String", "BASE_URL", "\"https://raw.githubusercontent.com/optile/checkout-android/develop/shared-test/lists/\""
         }
     }
@@ -109,18 +107,22 @@ dependencies {
 
     //testing
     testImplementation 'junit:junit:4.13.2'
+    testImplementation "com.squareup.okhttp3:mockwebserver:4.9.1"
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
 
-    implementation "androidx.test.espresso:espresso-idling-resource:$espressoVersion"
+    implementation "com.jakewharton.espresso:okhttp3-idling-resource:1.0.0"
 
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
     androidTestImplementation "org.mockito:mockito-core:$mockitoVersion"
     androidTestImplementation "org.mockito:mockito-android:$mockitoVersion"
     testImplementation 'org.hamcrest:hamcrest-library:2.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation("com.google.dagger:hilt-android-testing:$hilt_version")
+    androidTestAnnotationProcessor("com.google.dagger:hilt-android-compiler:$hilt_version")
 
     testImplementation "android.arch.core:core-testing:1.1.1"
 }

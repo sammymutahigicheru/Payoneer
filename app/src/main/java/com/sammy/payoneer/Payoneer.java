@@ -10,7 +10,7 @@ import timber.log.Timber;
 
 @HiltAndroidApp
 public class Payoneer extends Application {
-    ExecutorService executorService = Executors.newFixedThreadPool(4);
+
     @Override
     public void onCreate() {
         super.onCreate();
