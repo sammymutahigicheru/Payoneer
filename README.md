@@ -21,15 +21,4 @@ The tests in this code are UI tests.Use the default run configuration from Andro
 **Threading:** RxJava
 
 
-
-
-
-
-
-
-
-## Documentation
-
-The project is relatively straightforward. The app gets the data from the provided API using `RxJava2`, which also handles setting the UI states of the app. The state and data are handled by a helper `Resource` class and `enums`, which is then exposed to the UI as an observable `LiveData`. Using a simple switch statement, we then update the UI accordingly.
-
   
